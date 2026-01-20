@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Costa Nostra</title>
+  <meta name="description" content="Complete your order from Costa Nostra. Fast delivery of authentic Lahori cuisine.">
+  <link rel="icon" type="image/x-icon"
+    href="https://storage.googleapis.com/gpt-engineer-file-uploads/TNopvFvxGhg2IsermMALhXvMv8n2/uploads/1767563545540-logo.jpg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <nav class="navbar-inner">
+        <!-- Logo - Left Side -->
+        <a href="index.html" class="logo">
+          <span class="logo-text">Costa Nostra</span>
+        </a>
+
+        <!-- Navigation Links - Center -->
+        <ul class="nav-links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="menu.html">MENU</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+
+        <!-- Right Side Actions -->
+        <div class="nav-actions">
+          <!-- Reserve Table Button -->
+          <a href="contact.html" class="btn-reserve">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            RESERVE TABLE
+          </a>
+
+          <!-- Favorites Icon -->
+          <button class="icon-btn" onclick="openFavoritesDrawer()" aria-label="Favorites">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span class="badge favorites-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- Cart Icon -->
+          <button class="icon-btn" onclick="openCartDrawer()" aria-label="Cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            <span class="badge cart-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- User Profile / Sign In -->
+          <button class="icon-btn sign-in-btn" onclick="showAuthModal()" aria-label="Account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </button>
+
+          <div class="profile-dropdown" style="display: none;">
+            <button class="icon-btn profile-btn" onclick="toggleProfileDropdown()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+            <div class="profile-menu">
+              <a href="dashboard.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Dashboard
+              </a>
+              <button class="logout-btn" onclick="logout()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+                Sign Out
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span class="mobile-logo-text">Costa Nostra</span>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-menu-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="contact.html" class="mobile-reserve-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          RESERVE TABLE
+        </a>
+
+        <button class="mobile-auth-btn" onclick="showAuthModal(); toggleMobileMenu();">
+          Sign In / Sign Up
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+
+  <!-- Checkout Section -->
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <h1 class="section-title" style="text-align: left;">Checkout</h1>
+
+      <div class="checkout-grid">
+        <!-- Checkout Form -->
+        <form id="checkoutForm" class="animate-fade-in">
+          <div class="card-luxury" style="padding: 2rem; margin-bottom: 1.5rem;">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; color: hsl(var(--gold));">Delivery Details</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="input-luxury" name="fullName" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="input-luxury" name="email" required placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="input-luxury" name="phone" required placeholder="+92 300 1234567">
+              </div>
+              <div class="form-group">
+                <label class="form-label">City</label>
+                <input type="text" class="input-luxury" name="city" required placeholder="Lahore">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Delivery Address</label>
+              <textarea class="input-luxury" name="address" rows="3" required
+                placeholder="Complete address with landmarks"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Special Instructions (Optional)</label>
+              <textarea class="input-luxury" name="notes" rows="2"
+                placeholder="Any special requests or notes"></textarea>
+            </div>
+          </div>
+
+          <div class="card-luxury" style="padding: 2rem;">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; color: hsl(var(--gold));">Payment Method</h2>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <label
+                style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border: 1px solid hsl(var(--border)); border-radius: 0.5rem; cursor: pointer;">
+                <input type="radio" name="payment" value="cod" checked style="accent-color: hsl(var(--gold));">
+                <div>
+                  <div style="font-weight: 500;">Cash on Delivery</div>
+                  <div class="text-muted" style="font-size: 0.875rem;">Pay when your order arrives</div>
+                </div>
+              </label>
+
+              <label
+                style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border: 1px solid hsl(var(--border)); border-radius: 0.5rem; cursor: pointer;">
+                <input type="radio" name="payment" value="card" style="accent-color: hsl(var(--gold));">
+                <div>
+                  <div style="font-weight: 500;">Card Payment</div>
+                  <div class="text-muted" style="font-size: 0.875rem;">Pay securely with your card</div>
+                </div>
+              </label>
+            </div>
+
+            <div id="cardFields" style="display: none; margin-top: 1.5rem;">
+              <div class="form-group">
+                <label class="form-label">Card Number</label>
+                <input type="text" class="input-luxury" placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Expiry Date</label>
+                  <input type="text" class="input-luxury" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">CVV</label>
+                  <input type="text" class="input-luxury" placeholder="123" maxlength="3">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Order Summary -->
+        <div class="animate-fade-in animate-delay-1">
+          <div class="order-summary">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem; color: hsl(var(--gold));">Order Summary</h2>
+
+            <div id="orderItems" style="margin-bottom: 1.5rem; color: hsl(var(--foreground)); font-size: 15.5px;"></div>
+
+            <div style="border-top: 1px solid hsl(var(--gold)); padding-top: 1rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span class="text-muted">Subtotal</span>
+                <span id="subtotal">Rs. 0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <span class="text-muted">Delivery Fee</span>
+                <span>Rs. 150</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.25rem;">
+                <span>Total</span>
+                <span id="grandTotal" class="text-gold">Rs. 0</span>
+              </div>
+            </div>
+
+            <button type="submit" form="checkoutForm" class="btn-gold"
+              style="width: 100%; margin-top: 1.75rem; justify-content: center;">
+              Place Order
+            </button>
+
+            <a href="menu.html" class="btn-gold"
+              style="width: 100%; margin-top: 0.75rem; justify-content: center; text-align: center; display: block;">
+              Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">Costa Nostra</h3>
+          <p class="text-muted">Where Lahore meets luxury. Experience authentic Pakistani cuisine in an elegant setting.
+          </p>
+        </div>
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Hours</h3>
+          <ul class="footer-links">
+            <li>Monday - Thursday: 12pm - 11pm</li>
+            <li>Friday - Saturday: 12pm - 12am</li>
+            <li>Sunday: 12pm - 10pm</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <ul class="footer-links">
+            <li>123 Gulberg III, Lahore</li>
+            <li>+92 42 1234567</li>
+            <li>info@costanostra.pk</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Costa Nostra. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-overlay cart-overlay" onclick="closeCartDrawer()"></div>
+  <div class="drawer cart-drawer">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Your Cart</h2>
+      <button class="drawer-close" onclick="closeCartDrawer()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-content">
+      <div class="cart-empty" style="text-align: center; padding: 3rem 0;">
+        <p class="text-muted">Your cart is empty</p>
+      </div>
+      <div class="cart-items"></div>
+    </div>
+    <div class="drawer-footer cart-footer" style="display: none;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+        <span>Total</span>
+        <span class="cart-total-amount text-gold" style="font-weight: 600;">Rs. 0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal-overlay auth-overlay" onclick="if(event.target === this) closeAuthModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <span></span>
+        <button class="modal-close" onclick="closeAuthModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body auth-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
