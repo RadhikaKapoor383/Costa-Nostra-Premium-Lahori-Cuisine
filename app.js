@@ -1167,13 +1167,38 @@ function setupOTPInputs() {
 // Profile Dropdown
 function toggleProfileDropdown() {
   const menu = document.querySelector('.profile-menu');
-  menu.classList.toggle('active');
+  if (menu) {
+    menu.classList.toggle('active');
+  }
 }
 
 function closeProfileDropdown() {
   const menu = document.querySelector('.profile-menu');
-  if (menu) menu.classList.remove('active');
+  if (menu) 
+    menu.classList.remove('active');
 }
+
+document.addEventListener('click', (e) => {
+  const profileDropdown = document.querySelector('.profile-dropdown');
+  const profileMenu = document.getElementById('profileMenu');
+  
+  if (profileDropdown && !profileDropdown.contains(e.target)) {
+    if (profileMenu) {
+      profileMenu.classList.remove('active');
+    }
+  }
+});
+
+// Add click event to profile button
+document.addEventListener('DOMContentLoaded', () => {
+  const profileBtn = document.getElementById('profile-btn');
+  if (profileBtn) {
+    profileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleProfileDropdown();
+    });
+  }
+});
 
 // Menu Card Rendering
 function renderMenuCards(items = null, containerId = 'menuGrid') {
