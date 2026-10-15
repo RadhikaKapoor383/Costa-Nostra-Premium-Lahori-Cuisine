@@ -21,13 +21,13 @@ A fully responsive, multi-page restaurant website built with pure **HTML**, **CS
 
 ## ✨ Features
 
-- **🛒 Shopping Cart** — Add items, adjust quantities, and proceed to checkout
-- **❤️ Favourites Drawer** — Save your go-to dishes for quick reordering
-- **📅 Table Reservation** — Book a table directly from the contact page
-- **🔐 User Authentication** — Sign up / sign in with a profile dropdown
-- **📊 Dashboard** — View past orders and manage your account
-- **📱 Fully Responsive** — Works seamlessly on mobile, tablet, and desktop
-- **⚡ Vanilla JS** — No frameworks; fast, lightweight, and dependency-free
+- **🛒 Shopping Cart** — Add items, adjust quantities, and proceed to checkout.
+- **❤️ Favourites Drawer** — Save your go-to dishes for quick reordering.
+- **📅 Table Reservation** — Book a table directly from the contact page.
+- **🔐 User Authentication** — Sign up / sign in with a profile dropdown.
+- **📊 Dashboard** — View past orders and manage your account.
+- **📱 Fully Responsive** — Works seamlessly on mobile, tablet, and desktop.
+- **⚡ Vanilla JS** — No frameworks; fast, lightweight, and dependency-free.
 
 ---
 
